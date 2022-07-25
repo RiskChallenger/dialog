@@ -1,12 +1,13 @@
 import { Component, TemplateRef, Type, ViewChild, ViewContainerRef } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { DialogConfig, DialogRef, DialogService } from '@ngneat/dialog';
 import { interval, Observable } from 'rxjs';
 import { shareReplay, tap } from 'rxjs/operators';
-import { DialogConfig, DialogRef, DialogService } from '@ngneat/dialog';
 
-import { TestDialogComponent } from './test-dialog.component';
 import { ConfirmationModalComponent } from './custom-confirm-dialog.component';
 import { ResetLocationDialogComponent } from './reset-location-dialog.component';
+import { ScrollableDialogComponent } from './scrollable-dialog.component';
+import { TestDialogComponent } from './test-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -217,6 +218,10 @@ export class AppComponent {
         }
       }
     });
+  }
+
+  openScrollableDialog(config: DialogConfig): void {
+    this.openDialog(ScrollableDialogComponent, { ...config });
   }
 
   private clearConfig(config: DialogConfig) {
